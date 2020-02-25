@@ -21,13 +21,18 @@ class Solution(object):
         n = len(nums)
         result = []
         if n == 0:
+            # if there is nothing in the list, then output one range "element = str(low + 1) + '->' + str(high - 1)"
             add(result, lower - 1, upper + 1)
             return result
 
+        #1. add left bound
         add(result, lower - 1, nums[0])
+
+        #2. add middle part
         for i in range(1, n):
             add(result, nums[i - 1], nums[i])
 
+        #3. add right bound
         add(result, nums[n - 1], upper + 1)
 
         return result
